@@ -1,6 +1,8 @@
 
 import { defineStore } from 'pinia'
 
-export const useCounterStore = defineStore('modal', () => {
- 
+export default defineStore("modal",{
+    state : ()=> ({
+        isOpen : false,
+    }),
 })
