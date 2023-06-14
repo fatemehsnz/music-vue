@@ -139,14 +139,16 @@
                 <option value="USA">USA</option>
                 <option value="Mexico">Mexico</option>
                 <option value="Germany">Germany</option>
+                <option value="Iran">Iran</option>
               </vee-field>
               <ErrorMessage class="text-red-600" name="country"/>
             </div>
             <!-- TOS -->
             <div class="mb-3 pl-6">
-              <vee-field name="tos" type="checkbox" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
+              <vee-field name="tos" type="checkbox" value="1"
+                class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
               <label class="inline-block">Accept terms of service</label>
-              <ErrorMessage class="text-red-600" name="tos"/>
+              <ErrorMessage class="text-red-600 block" name="tos"/>
             </div>
             <button
               type="submit"
@@ -176,8 +178,8 @@ export default {
         age : "required|min_value:18|max_value:100",
         password : "required|min:3|max:100",
         confirm_password : "confirmed:@password",
-        country : "",
-        tos : "",
+        country : "required|not_one_of:Iran",
+        tos : "required",
       }
     }
   },
