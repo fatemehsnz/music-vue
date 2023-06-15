@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed z-10 inset-0 overflow-y-auto " id="modal" :class="hiddenClass">
+  <div class="fixed z-10 inset-0 overflow-y-auto" id="modal" :class="hiddenClass">
     <div
       class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
     >
@@ -28,28 +28,35 @@
           <ul class="flex flex-wrap mb-4">
             <li class="flex-auto text-center">
               <a
-                class="block rounded py-3 px-4 transition "
+                class="block rounded py-3 px-4 transition"
                 href="#"
                 @click="tab = 'login'"
-                :class="{'hover:text-white text-white bg-blue-600' : tab === 'login',
-                          'hover:text-blue-600' : tab === 'register'}"
+                :class="{
+                  'hover:text-white text-white bg-blue-600': tab === 'login',
+                  'hover:text-blue-600': tab === 'register'
+                }"
                 >Login</a
               >
             </li>
             <li class="flex-auto text-center">
-              <a class="block rounded py-3 px-4 transition" href="#"
-              @click="tab = 'register'"
-                :class="{'hover:text-white text-white bg-blue-600' : tab === 'register',
-                          'hover:text-blue-600' : tab === 'login'}"
-              >Register</a>
+              <a
+                class="block rounded py-3 px-4 transition"
+                href="#"
+                @click="tab = 'register'"
+                :class="{
+                  'hover:text-white text-white bg-blue-600': tab === 'register',
+                  'hover:text-blue-600': tab === 'login'
+                }"
+                >Register</a
+              >
             </li>
           </ul>
 
           <!-- Login Form -->
-          <login v-show="tab === 'login'"/>
+          <login v-show="tab === 'login'" />
 
           <!-- Registration Form -->
-          <register v-show="tab === 'register'"/>
+          <register v-show="tab === 'register'" />
         </div>
       </div>
     </div>
@@ -57,25 +64,25 @@
 </template>
 
 <script>
-import {mapState , mapWritableState} from 'pinia'
+import { mapState, mapWritableState } from 'pinia'
 import useModalStore from '../stores/modal'
 import Register from './Register.vue'
 import Login from './Login.vue'
 
 export default {
   name: 'Auth',
-  components:{
+  components: {
     Register,
     Login
   },
   data() {
-    return{
-      tab : "login",
+    return {
+      tab: 'login'
     }
   },
-  computed : {
-    ...mapState(useModalStore,["hiddenClass"]),
-    ...mapWritableState(useModalStore, ["isOpen"])
-  },
+  computed: {
+    ...mapState(useModalStore, ['hiddenClass']),
+    ...mapWritableState(useModalStore, ['isOpen'])
+  }
 }
 </script>
